@@ -32,7 +32,7 @@ class PropertyROI:
         return cash_on_cash_roi
 
 def main():
-    # Create PropertyROI instance
+    # Create PropertyROI 
     property_roi_calculator = PropertyROI()
 
     # Calculate ROI
