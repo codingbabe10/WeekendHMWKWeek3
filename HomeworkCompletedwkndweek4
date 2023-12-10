@@ -1,0 +1,48 @@
+class PropertyROI:
+    def __init__(self):
+        # Get user input for property details
+        self.rental_income = float(input("Enter Monthly Rental Income: $"))
+        self.taxes = float(input("Enter Taxes: $"))
+        self.insurance = float(input("Enter Insurance: $"))
+        self.vacancy = float(input("Enter Vacancy: $"))
+        self.repairs = float(input("Enter Repairs: $"))
+        self.property_management = float(input("Enter Property Management: $"))
+        self.mortgage = float(input("Enter Mortgage: $"))
+
+        self.down_payment = float(input("Enter Down Payment: $"))
+        self.closing_costs = float(input("Enter Closing Costs: $"))
+        self.repair_budget = float(input("Enter Repair Budget: $"))
+        self.misc_other = float(input("Enter Miscellaneous Other Costs: $"))
+
+        # Calculate total expenses and total investment
+        self.total_expenses = (
+            self.taxes + self.insurance + self.vacancy + self.repairs +
+            self.property_management + self.mortgage
+        )
+        self.total_investment = (
+            self.down_payment + self.closing_costs + self.repair_budget + self.misc_other
+        )
+
+    def calculate_monthly_cash_flow(self):
+        return self.rental_income - self.total_expenses
+
+    def calculate_roi(self):
+        total_monthly_cash_flow = self.calculate_monthly_cash_flow()
+        cash_on_cash_roi = (total_monthly_cash_flow * 12) / self.total_investment * 100
+        return cash_on_cash_roi
+
+def main():
+    # Create PropertyROI instance
+    property_roi_calculator = PropertyROI()
+
+    # Calculate ROI
+    cash_on_cash_roi = property_roi_calculator.calculate_roi()
+
+    # Display Results
+    print(f"Monthly Rental Income: ${property_roi_calculator.rental_income}")
+    print(f"Total Monthly Expenses: ${property_roi_calculator.total_expenses}")
+    print(f"Total Monthly Cash Flow: ${property_roi_calculator.calculate_monthly_cash_flow()}")
+    print(f"Cash on Cash ROI: {cash_on_cash_roi:.2f}%")
+
+if __name__ == "__main__":
+    main()
